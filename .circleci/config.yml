@@ -42,12 +42,16 @@ workflows:
           <<: *tags_filter
       - docker/publish:
           <<: *base_publish
-          update-description: true
+          name: publish_by_master
+          # https://github.com/docker/hub-feedback/issues/1914
+          # update-description: true
+          tag: $CIRCLE_SHA1,latest
           filters:
             branches:
               only: master
       - docker/publish:
           <<: *base_publish
+          name: publish_by_tag
           tag: $CIRCLE_TAG
           filters:
             branches:
