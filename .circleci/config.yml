@@ -1,0 +1,56 @@
+version: 2.1
+
+orbs:
+  docker: circleci/docker@1.4.0
+  node: circleci/node@3.0.1
+
+jobs:
+  download_playwright_browsers:
+    executor:
+      name: node/default
+      tag: '12.18.3'
+    steps:
+      - checkout
+      - node/install-packages
+      - persist_to_workspace:
+          root: ~/.cache
+          paths:
+            - ms-playwright
+
+refs:
+  base_publish: &base_publish
+    attach-at: ~/.cache
+    before_build:
+      - run: cp -r ~/.cache/ms-playwright ms-playwright
+    image: $CIRCLE_PROJECT_USERNAME/playwright-base-browsers
+    requires:
+      - lint
+      - download_playwright_browsers
+  tags_filter: &tags_filter
+     filters:
+      tags:
+        only: /.*/
+
+workflows:
+  lint_build_publish:
+    jobs:
+      - docker/hadolint:
+          <<: *tags_filter
+          name: lint
+          trusted-registries: docker.io
+      - download_playwright_browsers:
+          <<: *tags_filter
+      - docker/publish:
+          <<: *base_publish
+          update-description: true
+          filters:
+            branches:
+              only: master
+      - docker/publish:
+          <<: *base_publish
+          tag: $CIRCLE_TAG
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /.*/

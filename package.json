@@ -1,0 +1,22 @@
+{
+  "name": "docker-playwright-base-browsers",
+  "version": "0.0.0",
+  "description": "[![Docker Automated build](https://img.shields.io/docker/automated/sugarshin/playwright-base-browsers.svg?maxAge=2592000)](https://hub.docker.com/r/sugarshin/playwright-base-browsers/)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sugarshin/docker-playwright-base-browsers.git"
+  },
+  "author": "Shingo Sato",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sugarshin/docker-playwright-base-browsers/issues"
+  },
+  "homepage": "https://github.com/sugarshin/docker-playwright-base-browsers#readme",
+  "dependencies": {
+    "playwright": "1.3.0"
+  }
+}
