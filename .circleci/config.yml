@@ -26,6 +26,7 @@ refs:
     requires:
       - lint
       - download_playwright_browsers
+    context: org-global
   tags_filter: &tags_filter
      filters:
       tags:
