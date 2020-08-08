@@ -1,11 +1,23 @@
 # docker-playwright-base-browsers
 
-[![Docker Automated build](https://img.shields.io/docker/automated/sugarshin/playwright-base-browsers.svg?maxAge=2592000)](https://hub.docker.com/r/sugarshin/playwright-base-browsers/)
+[![Build Status][circleci-image]][circleci-url] ![Docker Pulls](https://img.shields.io/docker/pulls/sugarshin/playwright-base-browsers?style=flat-square)
 
-## Prepare `ms-playwright`
+A Docker image for Playwright with a Browser pre-installed.
 
-e. g.,
+CircleCI example:
 
+```yaml
+jobs:
+  install:
+    docker:
+      - image: sugarshin/playwright-base-browsers:latest
+        environment:
+          PLAYWRIGHT_BROWSERS_PATH: /usr/local/ms-playwright
+    steps:
+      - checkout
+      - run: npm ci
+      ...
 ```
-scp -r user@circleci.com:/root/.cache/ms-playwright /Users/$USER/local/
-```
+
+[circleci-image]: https://circleci.com/gh/sugarshin/docker-playwright-base-browsers/tree/master.svg?style=svg&circle-token=ad85a9656428647fa2e772c8622f6ff4a511065c
+[circleci-url]: https://circleci.com/gh/sugarshin/docker-playwright-base-browsers/tree/master
