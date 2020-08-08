@@ -2,7 +2,7 @@
 
 [![Build Status][circleci-image]][circleci-url] ![Docker Pulls](https://img.shields.io/docker/pulls/sugarshin/playwright-base-browsers?style=flat-square)
 
-A Docker image for Playwright with a Browser pre-installed.
+A Docker image for Playwright with browsers pre-installed.
 
 CircleCI example:
 
