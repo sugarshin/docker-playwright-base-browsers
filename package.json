@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/sugarshin/docker-playwright-base-browsers#readme",
   "dependencies": {
-    "playwright": "1.3.0"
+    "playwright": "1.7.1"
   }
 }
